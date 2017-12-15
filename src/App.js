@@ -1,21 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+/* @flow */
+import React, { Component } from 'react'
+import { Switch, Route } from 'react-router-dom'
 
-class App extends Component {
+import ProtectedRoute from './components/ProtectedRoute'
+import NotFound from './components/NotFound'
+import Main from './components/Main'
+import Login from './components/Login'
+//import './App.css'
+
+type Props = {}
+
+/**
+ * Component containing the entire app
+ */
+class App extends Component<Props> {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className='App'>
+        <Switch>
+          <ProtectedRoute exact path='/' component={Main}/>
+          <Route exact path='/login' component={Login}/>
+          <ProtectedRoute path='/simple' component={() => (<div>Other simple component</div>)}/>
+          <ProtectedRoute path='*' shouldShowHeader={false} component={NotFound}/>
+        </Switch>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

@@ -1,0 +1,12 @@
+[ignore]
+
+[include]
+./src/**/*.js
+
+[libs]
+
+[lints]
+
+[options]
+emoji=true
+include_warnings=true
