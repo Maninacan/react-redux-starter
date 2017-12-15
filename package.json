@@ -5,7 +5,7 @@
   "description": "",
   "repository": "",
   "homepage": ".",
-  "keywords": [],
+  "keywords": ["create-react-app"],
   "author": "Jonathan Aaron <jon.r.aaron@gmail.com>",
   "scripts": {
     "flow": "flow",

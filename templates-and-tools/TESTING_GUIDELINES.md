@@ -1,8 +1,6 @@
 # Purpose
 
-The purpose of this file is to document the our process for doing TDD (Test-Driven Development). 
-
-This is an ongoing effort so feel free to update this documentation as the process is refined.
+The purpose of this file is to document the my process for doing TDD (Test-Driven Development).
 
 ## Unit Tests
 Unit tests can be useful for testing logic and the existance (or absence) of React components.
