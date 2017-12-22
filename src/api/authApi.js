@@ -19,7 +19,7 @@ function loginEpic (action$) {
       )
       .then(({data}) => {
         data.user = {email}
-        return {data}
+        return data
       })
   })
 }
