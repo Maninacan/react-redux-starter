@@ -4,6 +4,10 @@ isNpmPackageInstalled() {
   npm list --depth 1 -g $1 > /dev/null 2>&1
 }
 
+LTBLUE='\033[1;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
 package=flow-typed
 
 if isNpmPackageInstalled ${package}
@@ -11,27 +15,8 @@ then
   firstVersion=$(${package} version)
   echo ${firstVersion} is installed
 
-  # echo "Is ok if I attempt to update it to the latest version? (y/N)"
-  # read isOkToUpdate
-  isOkToUpdate=Y
-
-  if [ ${isOkToUpdate} = "Y" ] || [ ${isOkToUpdate} = "y" ]
-  then
-    echo attempting to update ${package}...
-
-    npm install -g ${package}@latest
-
-    updatedVersion=$(${package} version)
-
-    if [ ${updatedVersion} = ${firstVersion} ]
-    then
-      echo ${package} is already up-to-date
-    else
-      echo ${package} is now up-to-date
-    fi
-  else
-    echo ${package} was not updated
-  fi
+  echo "${LTBLUE}It is important to update the \"${YELLOW}${package}${LTBLUE}\" package from time to time.${NC}"
+  echo "${LTBLUE}To update the \"${YELLOW}${package}${LTBLUE}\" package run \"${YELLOW}npm install -g ${package}@latest${LTBLUE}\"${NC}\n"
 else
   echo ${package} is NOT installed
 
@@ -41,7 +26,7 @@ else
 
   if [ ${isOkToInstallGlobally} = "Y" ] || [ ${isOkToInstallGlobally} = "y" ]
   then
-    echo installing now...
+    echo "${LTBLUE}installing now...${NC}"
     npm i -g ${package}
   else
     echo ${package} was not installed
@@ -50,18 +35,7 @@ fi
 
 if isNpmPackageInstalled ${package}
 then
-  # echo "In order for Flow to provide type checking on the dependencies for this project, I need to install the flow types."
-  # echo "Is it ok if I attempt to install/update the flow-types by running \"${package} install\"? (y/N)"
-
-  # read isOkToInstallFlowTypes
-  isOkToInstallFlowTypes=Y
-
-  if [ ${isOkToInstallFlowTypes} = "Y" ] || [ ${isOkToInstallFlowTypes} = "y" ]
-  then
-    echo Installing flow types...
-    ${package} install
-  else
-    echo "Flow types were not installed.  You can do it manually by running \"${package} install\""
-  fi
+  echo "${LTBLUE}In order for ${YELLOW}Flow${LTBLUE} to work with your dependencies, you will need to make sure your ${YELLOW}flow types${LTBLUE} are installed.${NC}"
+  echo "${LTBLUE}To install them run \"${YELLOW}${package} install${LTBLUE}\".${NC}\n"
 fi
 
