@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
-import { getDeckOfCardsAction, drawACardAction } from '../redux/deckOfCardsReducer'
+import { getDeckOfCards, drawACard } from '../redux/deckOfCardsReducer'
 import Loading from './Loading'
 
 const CardTable = styled.div`
@@ -31,7 +31,7 @@ class DeckOfCardsDemo extends PureComponent {
         <p>To completely remove this demo from the project, delete the above 3 files and all references to them.</p>
         {
           this.props.deckOfCardsRdx.deckId
-            ? (<button className={`uk-button uk-button-default ${this.props.deckOfCardsRdx.remaining ? '' : 'uk-disabled'}`} style={{color: 'white', width: 200, alignSelf: 'center', opacity: this.props.deckOfCardsRdx.remaining ? 1 : 0.5}} onClick={this.props.drawACard}>{this.props.deckOfCardsRdx.remaining ? 'Draw 2 Cards' : 'No more cards'}</button>)
+            ? (<button className={`uk-button uk-button-default ${this.props.deckOfCardsRdx.remaining ? '' : 'uk-disabled'}`} style={{color: 'white', width: 200, alignSelf: 'center', opacity: this.props.deckOfCardsRdx.remaining ? 1 : 0.5}} onClick={() => this.props.drawACard(this.props.deckOfCardsRdx.deckId)}>{this.props.deckOfCardsRdx.remaining ? 'Draw 2 Cards' : 'No more cards'}</button>)
             : (<Loading />)
         }
         <h3 style={{color: 'inherit'}}>Cards Remaining: {this.props.deckOfCardsRdx.remaining}</h3>
@@ -51,8 +51,8 @@ function mapStateToProps ({deckOfCardsRdx}) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    getDeckOfCards: () => dispatch(getDeckOfCardsAction()),
-    drawACard: () => dispatch(drawACardAction())
+    getDeckOfCards: () => dispatch(getDeckOfCards()),
+    drawACard: (deckId) => dispatch(drawACard(deckId))
   }
 }
 
