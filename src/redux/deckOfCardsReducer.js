@@ -1,6 +1,6 @@
 export const GET_DECK_OF_CARDS = 'GET_DECK_OF_CARDS'
-export const getDeckOfCardsAction = (dispatch) => {
-  return () => {
+export const getDeckOfCardsAction = () => {
+  return (dispatch) => {
     dispatch({
       type: GET_DECK_OF_CARDS
     })
@@ -9,11 +9,11 @@ export const getDeckOfCardsAction = (dispatch) => {
 
 export const GET_DECK_OF_CARDS_SUCCESS = 'GET_DECK_OF_CARDS_SUCCESS'
 export const getDeckOfCardsSuccessAction = ({deck_id, remaining}) => {
-  return {
+  return dispatch => dispatch({
     type: GET_DECK_OF_CARDS_SUCCESS,
     deckId: deck_id,
     remaining
-  }
+  })
 }
 
 export const GET_DECK_OF_CARDS_FAIL = 'GET_DECK_OF_CARDS_FAIL'
@@ -25,8 +25,8 @@ export const getDeckOfCardsFailAction = (getDeckOfCardsErrorMsg) => {
 }
 
 export const DRAW_A_CARD = 'DRAW_A_CARD'
-export const drawACardAction = (dispatch, getState) => {
-  return () => {
+export const drawACardAction = () => {
+  return (dispatch, getState) => {
     dispatch({
       type: DRAW_A_CARD,
       deckId: getState().deckOfCardsRdx.deckId

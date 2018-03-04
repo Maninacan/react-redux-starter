@@ -19,72 +19,76 @@ export function isAuthenticated () {
 
 export const CLEAR_AUTH_ERRORS = 'CLEAR_AUTH_ERRORS'
 export const clearAuthErrorsAction = () => {
-  return {
+  return dispatch => dispatch({
     type: CLEAR_AUTH_ERRORS
-  }
+  })
 }
 
 export const VERIFY_LOGIN = 'VERIFY_LOGIN'
 export const verifyLoginAction = (jwt, user) => {
-  return {
+  return dispatch => dispatch({
     type: VERIFY_LOGIN,
     jwt,
     user
-  }
+  })
 }
 
 export const LOGIN = 'LOGIN'
 export const loginAction = (email, password) => {
-  return {
+  return dispatch => dispatch({
     type: LOGIN,
     email,
     password
-  }
+  })
 }
 
 export const LOGIN_FULFILLED = 'LOGIN_FULFILLED'
 export const loginFulfilledAction = ({jwt, user}) => {
-  sessionStorage.setItem('jwt', jwt)
-  sessionStorage.setItem('user', JSON.stringify(user))
-  store.dispatch(clearAuthErrorsAction())
-  return {
-    type: LOGIN_FULFILLED,
-    jwt,
-    user
+  return dispatch => {
+    sessionStorage.setItem('jwt', jwt)
+    sessionStorage.setItem('user', JSON.stringify(user))
+    store.dispatch(clearAuthErrorsAction())
+    dispatch({
+      type: LOGIN_FULFILLED,
+      jwt,
+      user
+    })
   }
 }
 
 export const LOGIN_FAILED = 'LOGIN_FAILED'
 export const loginFailedAction = (errorMsg) => {
-  return {
+  return dispatch => dispatch({
     type: LOGIN_FAILED,
     errorMsg
-  }
+  })
 }
 
 export const LOGOUT = 'LOGOUT'
 export const logoutAction = () => {
-  sessionStorage.removeItem('jwt')
-  sessionStorage.removeItem('user')
-  return {
-    type: LOGOUT
+  return dispatch => {
+    sessionStorage.removeItem('jwt')
+    sessionStorage.removeItem('user')
+    dispatch({
+      type: LOGOUT
+    })
   }
 }
 
 export const LOGOUT_FULFILLED = 'LOGOUT_FULFILLED'
 export const logoutFulfilledAction = ({logoutStatus}) => {
-  return {
+  return dispatch => dispatch({
     type: LOGOUT_FULFILLED,
     logoutStatus
-  }
+  })
 }
 
 export const LOGOUT_FAILED = 'LOGOUT_FAILED'
 export const logoutFailedAction = (errorMsg) => {
-  return {
+  return dispatch => dispatch({
     type: LOGOUT_FAILED,
     errorMsg
-  }
+  })
 }
 
 const initialState = {

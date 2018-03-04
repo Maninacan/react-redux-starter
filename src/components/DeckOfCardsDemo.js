@@ -51,8 +51,8 @@ function mapStateToProps ({deckOfCardsRdx}) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    getDeckOfCards: dispatch(getDeckOfCardsAction),
-    drawACard: dispatch(drawACardAction)
+    getDeckOfCards: () => dispatch(getDeckOfCardsAction()),
+    drawACard: () => dispatch(drawACardAction())
   }
 }
 
