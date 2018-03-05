@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux'
 import { routerReducer as routerRdx } from 'react-router-redux'
+
 import authRdx from './authReducer'
-import deckOfCardsRdx from './deckOfCardsReducer'
+import feedbackResponseRdx from './feedbackResponseReducer'
+import uiRdx from './uiReducer'
 
 export default combineReducers({
   routerRdx,
   authRdx,
-  deckOfCardsRdx
+  feedbackResponseRdx,
+  uiRdx
 })

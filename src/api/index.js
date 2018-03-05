@@ -1,11 +1,8 @@
-import { combineEpics } from 'redux-observable'
+/* @flow */
+
 import axios from 'axios'
 
-import { deckOfCardsEpics } from './deckOfCardsApi'
-
-export const AxiosAPI = axios.create({
+export const tethyrAxiosAPI = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   timeout: 1000
 });
-
-export default combineEpics(...deckOfCardsEpics)

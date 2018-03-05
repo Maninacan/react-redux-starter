@@ -2,21 +2,22 @@ import React, { PureComponent } from 'react'
 import { Route } from 'react-router'
 import { connect } from 'react-redux'
 
-import Loading from './Loading'
+import SplashScreen from './SplashScreen'
 import Login from './Login'
 import ErrorBoundary from './ErrorBoundary'
-import { isAuthenticated } from '../redux/authReducer'
 
 class ProtectedRoute extends PureComponent {
   render () {
-    const { component: Component, authRdx, ...rest } = this.props
+    const { component: Component, authRdx, feedbackResponseRdx, ...rest } = this.props
+    const {loginPending, authCheckPending, isAuth, isApiAuth} = authRdx
+    const {createFeedbackResponseStatus} = feedbackResponseRdx
     return (
       <ErrorBoundary>
         <Route {...rest} render={props => {
-          if (isAuthenticated() || process.env.REACT_APP_OVERRIDE_LOGIN === 'true') {
+          if (isAuth || process.env.REACT_APP_OVERRIDE_LOGIN === 'true') {
             return <Component {...props}/>
-          } else if (authRdx.loginPending) {
-            return <Loading />
+          } else if ((loginPending || authCheckPending || !createFeedbackResponseStatus) && !isApiAuth) {
+            return <SplashScreen />
           } else {
             return <Login />
           }
@@ -26,9 +27,10 @@ class ProtectedRoute extends PureComponent {
   }
 }
 
-function mapStateToProps ({authRdx}) {
+function mapStateToProps ({authRdx, feedbackResponseRdx}) {
   return {
-    authRdx
+    authRdx,
+    feedbackResponseRdx
   }
 }
 

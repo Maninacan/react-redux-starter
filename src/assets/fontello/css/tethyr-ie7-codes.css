@@ -1,0 +1,6 @@
+
+.icon-plus-circle { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf055;&nbsp;'); }
+.icon-facebook-square { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf082;&nbsp;'); }
+.icon-sign-in { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf090;&nbsp;'); }
+.icon-bars { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf0c9;&nbsp;'); }
+.icon-user-alt { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf406;&nbsp;'); }

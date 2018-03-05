@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2018 by original authors @ fontello.com</metadata>
+<defs>
+<font id="tethyr" horiz-adv-x="1000" >
+<font-face font-family="tethyr" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="plus-circle" unicode="&#xf055;" d="M750 362v-24c0-13-10-23-23-23h-192v-192c0-12-10-23-23-23h-24c-13 0-23 11-23 23v192h-192c-12 0-23 10-23 23v24c0 13 11 23 23 23h192v192c0 13 10 23 23 23h24c13 0 23-10 23-23v-192h192c13 0 23-10 23-23z m234-12c0-268-216-484-484-484s-484 216-484 484 216 484 484 484 484-216 484-484z m-62 0c0 234-190 422-422 422-234 0-422-190-422-422 0-234 190-422 422-422 234 0 422 190 422 422z" horiz-adv-x="1000" />
+
+<glyph glyph-name="facebook-square" unicode="&#xf082;" d="M875 694v-688c0-52-42-94-94-94h-166v347h118l17 132h-135v84c0 38 10 64 65 64h70v118c-12 2-53 6-102 6-101 0-170-62-170-175v-98h-119v-132h119v-346h-384c-52 0-94 42-94 94v688c0 52 42 94 94 94h687c52 0 94-42 94-94z" horiz-adv-x="875" />
+
+<glyph glyph-name="sign-in" unicode="&#xf090;" d="M359 687l322-320c9-10 9-24 0-34l-322-320c-9-9-24-9-33 0l-14 14c-9 9-9 24 0 33l258 257h-547c-12 0-23 10-23 23v20c0 13 11 23 23 23h547l-257 257c-10 9-10 24 0 33l13 14c9 9 24 9 33 0z m641-618v562c0 52-42 94-94 94h-258c-12 0-23-10-23-23v-16c0-13 11-23 23-23h258c17 0 32-15 32-32v-562c0-17-15-31-32-31h-258c-12 0-23-11-23-24v-16c0-13 11-23 23-23h258c52 0 94 42 94 94z" horiz-adv-x="1000" />
+
+<glyph glyph-name="bars" unicode="&#xf0c9;" d="M852 608h-829c-12 0-23 10-23 23v63c0 13 11 23 23 23h829c13 0 23-10 23-23v-63c0-13-10-23-23-23z m0-313h-829c-12 0-23 11-23 24v62c0 13 11 24 23 24h829c13 0 23-11 23-24v-62c0-13-10-24-23-24z m0-312h-829c-12 0-23 10-23 23v63c0 13 11 23 23 23h829c13 0 23-10 23-23v-63c0-13-10-23-23-23z" horiz-adv-x="875" />
+
+<glyph glyph-name="user-alt" unicode="&#xf406;" d="M188 600c0 138 111 250 250 250s250-112 250-250-112-250-250-250-250 112-250 250z m500-312h-107c-89-41-194-43-287 0h-106c-104 0-188-84-188-188v-203c0-26 21-47 47-47h781c26 0 47 21 47 47v203c0 104-84 188-187 188z" horiz-adv-x="875" />
+</font>
+</defs>
+</svg>

@@ -4,8 +4,10 @@
 ./src/**/*.js
 
 [libs]
+flow-typed
 
 [lints]
+.eslintrc
 
 [options]
 emoji=true

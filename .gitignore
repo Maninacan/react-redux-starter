@@ -5,6 +5,7 @@
 
 # generated css files
 src/**/*.css
+!/src/assets/fontello/**/*.css
 
 # dependencies
 node_modules
