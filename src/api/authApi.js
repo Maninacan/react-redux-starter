@@ -1,38 +1,34 @@
-/* @flow */
-
 import axios from 'axios'
 import {
-  REQUEST_API_AUTH,
-  requestApiAuthSuccess,
-  requestApiAuthFail
+  LOGIN,
+  loginFulfilledAction,
+  loginFailedAction,
+  LOGOUT,
+  logoutFulfilledAction,
+  logoutFailedAction
 } from '../redux/authReducer'
 import { handleRequest } from './apiUtils'
-import type { ObservableAction, UserApiAuth } from '../customFlowTypes'
 
-function userApiAuthEpic (action$: ObservableAction) {
-  return handleRequest(action$, REQUEST_API_AUTH, requestApiAuthSuccess, requestApiAuthFail, (
-    {
-      facebookAuthData
-    }: UserApiAuth
-  ) => {
-    //delete facebookAuthData.picture
+function loginEpic (action$) {
+  return handleRequest(action$, LOGIN, loginFulfilledAction, loginFailedAction, ({email, password}) => {
     return axios
       .post(
-        `${String(process.env.REACT_APP_TETHYR_API)}/v1/auth/facebook_user_token`,
-        {
-          data: {
-            type: "user",
-            attributes: {
-              ...facebookAuthData
-            }
-          }
-        },
+        `${process.env.REACT_APP_API}/v1/knock/auth_token`,
+        {auth: {email, password}},
         {contentType: 'application/json'}
       )
-      //.then(({data}) => data)
+      .then(({data}) => {
+        data.user = {email}
+        return data
+      })
   })
 }
 
-export default [
-  userApiAuthEpic
-]
+function logoutEpic (action$) {
+  return handleRequest(action$, LOGOUT, logoutFulfilledAction, logoutFailedAction, () => {
+    // TODO: Handle logout request
+    return Promise.resolve({logoutStatus: 'success'})
+  })
+}
+
+export const authEpics = [loginEpic, logoutEpic]

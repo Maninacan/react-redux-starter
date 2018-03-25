@@ -1,41 +1,31 @@
 /* @flow */
-
-import React from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
+import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import ProtectedRoute from './components/ProtectedRoute'
-import Main from './components/Main'
 import NotFound from './components/NotFound'
+import Main from './components/Main'
+import Login from './components/Login'
+//import './App.css'
 
-class App extends React.PureComponent {
-  render () {
-    const {loginPending, authCheckPending, match} = this.props
+type Props = {}
+
+/**
+ * Component containing the entire app
+ */
+class App extends Component<Props> {
+  render() {
     return (
-      <div className='App' style={{filter: loginPending || authCheckPending ? 'blur(3px)' : 'blur(0px)'}}>
+      <div className='App'>
         <Switch>
-          <ProtectedRoute exact path={`${match.path}`} component={Main}/>
-          <ProtectedRoute exact path={`${match.path}:uid`} component={Main}/>
-          <Route path='*' component={NotFound}/>
+          <ProtectedRoute exact path='/' component={Main}/>
+          <Route exact path='/login' component={Login}/>
+          <ProtectedRoute path='/simple' component={() => (<div>Other simple component</div>)}/>
+          <ProtectedRoute path='*' shouldShowHeader={false} component={NotFound}/>
         </Switch>
       </div>
     )
   }
 }
 
-function mapStateToProps ({authRdx}) {
-  const {loginPending, authCheckPending} = authRdx
-  return {
-    loginPending,
-    authCheckPending
-  }
-}
-
-function mapDispatchToProps () {
-  return {
-
-  }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default App

@@ -7,10 +7,6 @@
     ]
   },
   "globals": {
-    "it": true,
-    "FB": true
-  },
-  "env": {
-    "jest": true
+    "it": true
   }
 }

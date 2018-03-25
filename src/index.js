@@ -1,5 +1,4 @@
 /* @flow */
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
@@ -8,7 +7,6 @@ import { ConnectedRouter } from 'react-router-redux'
 import store, { history } from './store'
 import UIkit from 'uikit'
 import Icons from 'uikit/dist/js/uikit-icons'
-import './assets/fontello/css/tethyr.css'
 
 import ErrorBoundary from './components/ErrorBoundary'
 import App from './App'
@@ -27,7 +25,7 @@ ReactDOM.render(
     </ConnectedRouter>
   </Provider>,
   // $FlowFixMe
-  document.getElementById('app-root')
+  document.getElementById('root')
 )
 
 /**
